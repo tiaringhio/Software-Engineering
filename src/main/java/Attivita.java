@@ -1,6 +1,6 @@
 public class Attivita extends Persona {
 
-    static String nome_attivita;
+    private static String nome_attivita;
     static char condizione = 'y';
     String[] iscritti;
 
