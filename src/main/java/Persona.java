@@ -1,16 +1,17 @@
+import java.util.Objects;
+import java.util.Scanner;
+
+import static com.sun.org.apache.bcel.internal.classfile.Utility.printArray;
+
 public class Persona {
-    private String nome;
-    private String cognome;
-    private String mail;
-    private String password;
-    private String ruolo;
-    private char condizione = 'y';
+    static String nome;
+    static String cognome;
+    static String mail;
+    static String password;
+    static String ruolo;
+    static Persona[] iscritti = new Persona[5];
 
-
-    static int id = 1;
-    private static Persona[] iscritti = new Persona[50];
-
-    public Persona(String nome, String cognome, String mail, String password, String ruolo) {
+    Persona(String nome, String cognome, String mail, String password, String ruolo) {
         this.nome = nome;
         this.cognome = cognome;
         this.mail = mail;
@@ -19,13 +20,25 @@ public class Persona {
     }
 
     public void Registrazione() {
-        while (condizione == 'y') {
-            System.out.println("Nome: " + nome);
-            System.out.println("Cognome: " + cognome);
-            System.out.println("Mail: " + mail);
-            System.out.println("Password: " + password);
-            System.out.println("Ruolo: " + ruolo);
-            System.out.println("Vuoi inserire un altro utente? (y/n)" + condizione);
+        Scanner input = new Scanner(System.in);
+        System.out.println("Quanti utenti vuoi inserire? ");
+        int numero = input.nextInt();
+        for (int i = 1; i <= numero; i++)  {
+            System.out.println("Nome: ");
+            nome = input.next();
+            System.out.println("Cognome: ");
+            cognome = input.next();
+            System.out.println("Mail: ");
+            mail = input.next();
+            System.out.println("Password: ");
+            password = input.next();
+            System.out.println("Ruolo: ");
+            ruolo = input.next();
+            //Persona persona = new Persona(nome, cognome, mail, password, ruolo);
         }
+    }
+    public static void main(String[] args) {
+        Persona persona = new Persona(nome, cognome, mail, password, ruolo);
+        persona.Registrazione();
     }
 }

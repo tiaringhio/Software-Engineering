@@ -1,10 +1,9 @@
-public class Attivita extends Persona {
+class Attivita extends Persona {
 
     private static String nome_attivita;
     static char condizione = 'y';
-    String[] iscritti;
 
-    public Attivita(String nome, String cognome, String mail, String password, String ruolo) {
+    Attivita(String nome, String cognome, String mail, String password, String ruolo) {
         super(nome, cognome, mail, password, ruolo);
     }
 
