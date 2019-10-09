@@ -1,17 +1,14 @@
 import java.util.Objects;
 import java.util.Scanner;
 
-import static com.sun.org.apache.bcel.internal.classfile.Utility.printArray;
-
 public class Persona {
-    static String nome;
-    static String cognome;
-    static String mail;
-    static String password;
-    static String ruolo;
-    static Persona[] iscritti = new Persona[5];
+    String nome;
+    String cognome;
+    String mail;
+    String password;
+    String ruolo;
 
-    Persona(String nome, String cognome, String mail, String password, String ruolo) {
+    public Persona(String nome, String cognome, String mail, String password, String ruolo) {
         this.nome = nome;
         this.cognome = cognome;
         this.mail = mail;
@@ -19,26 +16,42 @@ public class Persona {
         this.ruolo = ruolo;
     }
 
-    public void Registrazione() {
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRuolo(String ruolo) {
+        this.ruolo = ruolo;
+    }
+
+    public static void main(String args[]) {
+        Persona iscritti[] = new Persona[5];
         Scanner input = new Scanner(System.in);
         System.out.println("Quanti utenti vuoi inserire? ");
         int numero = input.nextInt();
-        for (int i = 1; i <= numero; i++)  {
+        for (int i = 1; i <= numero; i++) {
             System.out.println("Nome: ");
-            nome = input.next();
+            iscritti[i].setNome(input.next());
             System.out.println("Cognome: ");
-            cognome = input.next();
+            iscritti[i].setCognome(input.next());
             System.out.println("Mail: ");
-            mail = input.next();
+            iscritti[i].setMail(input.next());
             System.out.println("Password: ");
-            password = input.next();
+            iscritti[i].setPassword(input.next());
             System.out.println("Ruolo: ");
-            ruolo = input.next();
-            //Persona persona = new Persona(nome, cognome, mail, password, ruolo);
+            iscritti[i].setRuolo(input.next());
         }
-    }
-    public static void main(String[] args) {
-        Persona persona = new Persona(nome, cognome, mail, password, ruolo);
-        persona.Registrazione();
     }
 }
