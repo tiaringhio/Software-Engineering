@@ -1,37 +1,48 @@
+/**
+ * Every method defined in the classes is shown here
+ *
+ * @author Mattia Ricci mattia.ricci1@studenti.unipr.it
+ * @author Riccardo Lo Bue riccardo.lobue@studenti.unipr.it
+ */
 public class Main {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
-        /*
-        *
-        * */
+        Person person1 = new Person("Mattia", "Ricci", "mattiaricci@email.it", "password");
+        Person person2 = new Person("Riccardo", "Lo Bue", "riccardolb@email.it", "password");
 
-        Person p1 = new Person("Mattia", "Ricci", "mattiaricci@email.it", "password");
-        Person p2 = new Person("Riccardo", "Lo Bue", "riccardolb@email.it", "password");
+        Activity activity1 = new Activity("Football");
+        Race race1 = new Race("Champions League");
+        Course course1 = new Course(" Serie A");
 
-        Activity a1 = new Activity("Calcio");
-        Race g1 = new Race("Torneo Tre Maghi");
 
-        /*
-        * */
+        Member member1 = new Member("Giovanni", "Bianchi", "jbianchi@email.it", "password");
+        Admin admin1 = new Admin("Peter", "Logan", "plogan@email.it",  "admin");
 
-        Member s1 = new Member("Giovanni", "Bianchi", "jbianchi@email.it", "password");
-        Admin ad1 = new Admin("Peter", "Logan", "plogan@email.it",  "admin");
-        System.out.println("Ecco le persone esistenti: " + p1.toString() + p2.toString() + "\n");
-        a1.addPerson(p1);
-        a1.addPerson(p2);
+        System.out.println("Every person existent: " + person1.toString() + person2.toString() + "\n");
+        activity1.addPerson(person1);
+        activity1.addPerson(person2);
 
-        a1.deletePerson(p1);
+        activity1.deletePerson(person1);
 
-        for (Person p:a1.getSubscribers()) {
+        for (Person p:activity1.getSubscribers()) {
             System.out.println("Ecco gli iscritti all'attivita scelta: " + p.toString() + "\n");
         }
 
-        s1.subscribeActivity(a1);
-        s1.subscribeActivity(g1);
-        System.out.println("Ecco i soci esistenti: " + s1.toString() + "\n");
+        member1.subscribeActivity(activity1);
+        member1.subscribeActivity(race1);
 
-        for (Person p:g1.getSubscribers()) {
-            System.out.println("Ecco gli iscritti alla gara: " + p.toString() + "\n");
+        admin1.subscribeActivity(activity1);
+        admin1.subscribeActivity(race1);
+
+        System.out.println("Every member existent: " + member1.toString() + "\n");
+        System.out.println("Every member existent: " + admin1.toString() + "\n");
+
+        for (Person p:race1.getSubscribers()) {
+            System.out.println("Every subscribers to the race: " + p.toString() + "\n");
+        }
+
+        for(Person p:course1.getSubscribers()) {
+            System.out.println("Every subscribers to the course: " + p.toString() + "\n");
         }
     }
 }
