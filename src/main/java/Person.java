@@ -2,7 +2,7 @@
  * Person has name, surname, mail and password. It's the main Object
  *
  * @author Mattia Ricci mattia.ricci1@studenti.unipr.it
- * @author Riccardo Lo Bue riccardo.lobue@studenti.unipr.it
+ * @author Gaspare Riccardo Lo Bue gasparericcardo.lobue@studenti.unipr.it
  */
 public class Person {
     String name;
