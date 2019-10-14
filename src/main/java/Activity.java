@@ -2,7 +2,7 @@
  * Activity has a name and an array of Person registered to that Activity
  *
  * @author Mattia Ricci mattia.ricci1@studenti.unipr.it
- * @author Riccardo Lo Bue riccardo.lobue@studenti.unipr.it
+ * @author Gaspare Riccardo Lo Bue gasparericcardo.lobue@studenti.unipr.it
  */
 class Activity {
     private String name;
