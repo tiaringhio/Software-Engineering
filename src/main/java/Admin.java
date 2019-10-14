@@ -19,64 +19,39 @@ public class Admin extends Member {
     }
 
     /**
-     * This method registers a Person to an Activity
-     *
-     * @param activity the activity to which i register the person
-     */
-    public void Registration(Activity activity) {
-        activity.addPerson(Admin.this);
-    }
-
-    /**
      * This method subscribes a Member to an Activity
      *
-     * @param member the Member to subscribe
+     * @param person the Member to subscribe
      * @param activity the Activity to subscribe the Member to
      */
-    public void SubscribeMember(Member member, Activity activity) {
-        member.subscribeActivity(activity);
+    public void subscribeMember(Person person, Activity activity) {
+        activity.addPerson(person);
     }
 
     /**
      * This method unsubscribes a Member from an Activity
      *
-     * @param member the Member to unsubscribe
+     * @param person the Member to unsubscribe
      * @param activity  the Activity to unsubscribe the Member from
      */
-    public void UnsubscribeMember(Member member, Activity activity) {
-        member.unsubscribeActivity(activity);
+    public void unsubscribeMember(Person person, Activity activity) {
+        activity.deletePerson(person);
     }
 
     /**
-     * This method modifies a Member's data
+     * This methods modifies a Person's data using the setters methods defined in Person.
+     * This means that an admin can modify every Person's data, while a member can't.
      *
-     * @param member the Member to modify
+     * @param person
+     * @param name
+     * @param surname
+     * @param mail
+     * @param password
      */
-    public void ModifyMember(Member member) {
-        member.modifyData(member, name, surname, mail, password);
-    }
-
-    /**
-     * This method modifies and Admin's data
-     *
-     * @param admin the Admin to modify
-     */
-    public void ModifyAdmin(Admin admin){
-        admin.modifyData(admin, name, surname, mail, password);
-    }
-
-    /**
-     * This method prints the Admin's data in a more clean way,
-     * it overrides the toString method
-     *
-     * @return The Admin's data
-     */
-    @Override
-    public String toString() {
-        return "(" +
-                "Name='" + getName() + "'" +
-                ", Surname='" + getSurname() + "'" +
-                ", Mail='" + getMail() + "'" +
-                ", Password='" + getPassword() + "'" + ")";
+    void modifyData(Person person, String name, String surname, String mail, String password) {
+        person.setName(name);
+        person.setSurname(surname);
+        person.setMail(mail);
+        person.setPassword(password);
     }
 }

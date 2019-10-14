@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * Activity has a name and an array of Person registered to that Activity
  *
@@ -120,12 +122,19 @@ class Activity {
      * This method prints the Activity's data in a more clean way,
      * it overrides the toString method
      *
-     * @return
+     * @return String
      */
     @Override
     public String toString() {
         return "(" +
-                "nome='" + getName() + "'" +
-                ", cognome='" + getSubscribers() + ")";
+                "Name = " + getName() + ")";
+    }
+
+    /**
+     *
+     * @return String the Activity's subscribers
+     */
+    public String activityMembers() {
+        return "(" + Arrays.toString(getSubscribers()) + ")";
     }
 }

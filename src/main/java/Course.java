@@ -1,16 +1,10 @@
 /**
- * Course is and Activity subclass
+ * Course is an Activity subclass
  *
  * @author Mattia Ricci mattia.ricci1@studenti.unipr.it
  * @author Gaspare Riccardo Lo Bue gasparericcardo.lobue@studenti.unipr.it
  */
 public class Course extends Activity {
-
-    /**
-     * Empty constructor for the object
-     */
-    public Course() {
-    }
 
     /**
      * The constructor

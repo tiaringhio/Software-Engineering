@@ -19,27 +19,8 @@ public class Member extends Person {
     }
 
     /**
-     * This method subscribes a member to a specific Activity,
-     * It uses the addPerson method from Person, since Member extends Person
-     *
-     * @param activity the activity
-     */
-    void subscribeActivity(Activity activity) {
-        activity.addPerson(Member.this);
-    }
-
-    /**
-     * This method unsubscribes a member from a specific Activity,
-     * It uses the deletePerson method from Person, since Member extends Person
-     *
-     * @param activity the activity
-     */
-    void unsubscribeActivity(Activity activity) {
-        activity.deletePerson(Member.this);
-    }
-
-    /**
-     * This method modifies a Member's information using the setters methods defined in Person
+     * This method modifies a Member's information using the setters methods defined in Person, not a person
+     * So a simple member cannot modify a Person's data, while an Admin can
      *
      * @param member the Member
      * @param name the Member's name
@@ -47,25 +28,10 @@ public class Member extends Person {
      * @param mail the Member's mail
      * @param password the Member's password
      */
-    void modifyData(Member member, String name, String surname, String mail, String password) {
+    void modifyMemberData(Member member, String name, String surname, String mail, String password) {
         member.setName(name);
         member.setSurname(surname);
         member.setMail(mail);
         member.setPassword(password);
-    }
-
-    /**
-     * This method prints the Member's data in a more clean way,
-     * it overrides the toString method
-     *
-     * @return the Member's data
-     */
-    @Override
-    public String toString() {
-        return "(" +
-                "Name='" + getName() + "'" +
-                ", Surname='" + getSurname() + "'" +
-                ", Mail='" + getMail() + "'" +
-                ", Password='" + getPassword() + "'" + ")";
     }
 }

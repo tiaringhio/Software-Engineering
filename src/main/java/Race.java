@@ -7,12 +7,6 @@
 public class Race extends Activity {
 
     /**
-     * Empty constructor for the object
-     */
-    public Race() {
-    }
-
-    /**
      * The constructor
      *
      * @param nome Race's name
