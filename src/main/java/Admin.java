@@ -3,7 +3,7 @@
  * has more methods so that it can have more privileges
  *
  * @author Mattia Ricci mattia.ricci1@studenti.unipr.it
- * @author Riccardo Lo Bue riccardo.lobue@studenti.unipr.it
+ * @author Gaspare Riccardo Lo Bue gasparericcardo.lobue@studenti.unipr.it
  */
 public class Admin extends Member {
     /**
