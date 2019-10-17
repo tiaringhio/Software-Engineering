@@ -51,6 +51,10 @@ public class Main {
         System.out.println(client1.printList(cartList));
         System.out.println("----------------------------------------------------------------------------------------");
 
+        /**
+         * The client buys a wine, the quantity is decided via user input
+         * if the user requests more bottles than available e message will be displayed
+         */
         client1.buyWine(wine1);
 
     }

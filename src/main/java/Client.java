@@ -79,10 +79,10 @@ public class Client extends Person {
      * @param year Wine's year
      */
     public void search(String name, int year){
-        System.out.println("What are you looking for?\n");
         for (Wine w : Main.wineList) {
             if (w.getName().equals(name) && w.getYear() == year){
                 System.out.println("Item found!");
+                break;
             }
             else {
                 System.out.println("Item not found");
