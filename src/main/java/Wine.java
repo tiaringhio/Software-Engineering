@@ -110,9 +110,6 @@ public class Wine {
         this.produced = produced;
     }
 
-    public void bottlesSold(Wine wine){
-    }
-
     /**
      * Prints the Wines's data in a clean way.
      * It overrides the toString method
