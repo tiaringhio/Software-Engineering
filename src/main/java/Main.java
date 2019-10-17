@@ -16,8 +16,8 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         // Created two clients and added them to Client list
-        Client client1 = new Client("Mattia", "Ricci", "tia", "password");
-        Client client2 = new Client("Gaspare", "Lo Bue", "gas", "password");
+        Client client1 = new Client("Mattia", "Ricci", "tia", "password", false);
+        Client client2 = new Client("Gaspare", "Lo Bue", "gas", "password", false);
         clientList.add(client1);
         clientList.add(client2);
         System.out.print("Created two clients:\n" + clientList.toString() + "\n");
@@ -37,18 +37,21 @@ public class Main {
         System.out.print("Created two wines:\n" + wineList.toString() +"\n");
         System.out.println("----------------------------------------------------------------------------------------");
 
+        // Logging the Client in, User input required
+        client1.login();
+        System.out.println("----------------------------------------------------------------------------------------");
+
         // The client searches a Wine
+        client1.search("Nebbiolo", 2005);
+      //  System.out.println(client1.printList(cartList));
+        System.out.println("----------------------------------------------------------------------------------------");
+
+        // The client adds a Wine to the cart
         client1.addToCart("Nebbiolo", 2005);
         System.out.println(client1.printList(cartList));
         System.out.println("----------------------------------------------------------------------------------------");
 
-        //TODO finish login method
-        /*String user = null;
-        String password = null;
-        System.out.println("Insert user and password\n");
-        user = scan.next();
-        password = scan.next();
-        client1.login(client1, user, password);*/
+        client1.buyWine(wine1);
 
     }
 }
