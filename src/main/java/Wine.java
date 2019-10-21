@@ -1,3 +1,9 @@
+/**
+ * Every method defined in the classes is shown here
+ *
+ * @author Mattia Ricci mattia.ricci1@studenti.unipr.it
+ * @author Gaspare Riccardo Lo Bue gasparericcardo.lobue@studenti.unipr.it
+ */
 public class Wine {
     String name;
     int year;
