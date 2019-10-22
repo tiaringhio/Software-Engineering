@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Main {
     // Every Wine is stored here
@@ -45,34 +44,31 @@ public class Main {
         client1.login();
         System.out.println("----------------------------------------------------------------------------------");
 
-        // The client searches a Wine
-        client1.search("Nebbiolo", 2005);
-        System.out.println("----------------------------------------------------------------------------------------");
-
-        // The client adds a Wine to the cart
-        // This function is not requested but we were caught in the process to we decided to include it anyway
-        client1.addToCart("Nebbiolo", 2005);
-        System.out.println(client1.printList(cartList));
-        System.out.println("----------------------------------------------------------------------------------------");
-
-        // The client buys a wine, the quantity is decided via user input
+        // The searches for a wine, decides if he wants to add the item to the cart,
+        // buys a wine, the quantity is decided via user input
         // if the user requests more bottles than available a message will be displayed
-        client1.buyWine(wine1);
+        client1.buyWine();
         System.out.println("----------------------------------------------------------------------------------------");
         employee1.shipOrder();
         System.out.println("----------------------------------------------------------------------------------------\n\n");
 
-        // The client buys every bottle of wine available, the quantity is decided via user input
+        // The client will buy every bottle of wine available, the quantity is decided via user input
         client2.login();
         System.out.println("----------------------------------------------------------------------------------");
-        client2.buyWine(wine2);
+        // The client searches a Wine
+        client1.search("Chianti", 2007);
+        System.out.println("----------------------------------------------------------------------------------------");
+        client2.buyWine();
         System.out.println("----------------------------------------------------------------------------------------");
         employee1.shipOrder();
         System.out.println("----------------------------------------------------------------------------------------\n\n");
 
+        // The client will request more bottles of wine, since Client 2 has bought everything
         client3.login();
         System.out.println("----------------------------------------------------------------------------------------");
-        client3.buyWine(wine2);
+        client1.search("Chianti", 2007);
+        System.out.println("----------------------------------------------------------------------------------------");
+        client3.buyWine();
         System.out.println("----------------------------------------------------------------------------------------");
         employee1.addBottles(wine2);
         System.out.println("----------------------------------------------------------------------------------------");

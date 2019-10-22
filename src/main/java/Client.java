@@ -67,18 +67,29 @@ public class Client extends Person {
 
     /**
      * This method searches for the wine, if found
-     * a simple console  message is displayed.
+     * a simple console message is displayed.
      * I decided to user a counter so that item not found is only printed if the
+     * cycle has gone through all the ArrayList.
      *
      * @param name Wine's name
      * @param year Wine's year
      */
     public void search(String name, int year){
         int counter = 0;
+        boolean addToCart;
         for (Wine w : Main.wineList) {
             counter++;
             if (w.getName().equals(name) && w.getYear() == year){
                 System.out.println("Item found!");
+                System.out.println("Would you like to add the item to the cart?\n");
+                addToCart = scan.nextBoolean();
+                if (addToCart){
+                    Main.cartList.add(w);
+                    System.out.println("Item added to cart!\n");
+                }
+                else {
+                    System.out.println("Alright, maybe next time!\n");
+                }
                 break;
             }
             else if(counter == Main.wineList.size()) {
@@ -88,49 +99,30 @@ public class Client extends Person {
     }
 
     /**
-     * This method searches te wines and if it founds one
-     * it adds that wine to a list defined in Main, cartList
-     *
-     * @param name Wines's main
-     * @param year Wine's year
-     */
-    public void addToCart(String name, int year){
-        for (Wine w : Main.wineList) {
-            if(w.getName().equals(name) && w.getYear() == year){
-                Main.cartList.add(w);
-                System.out.println("Item found and added to cart!");
-            }
-        }
-        if(Main.cartList.size()==0){
-            System.out.println("Item not found");
-        }
-    }
-
-    /**
      * This method allows the Client to buy Wine.
-     * The method will ask for a quantity,
+     * It takes the Wine that has been added to the cart,
+     * the method will the ask for a quantity,
      * if the quantity requested is more than the one available
      * it will print a message and ask if the Client wants to request for more bottles.
      * If the clients buys every bottle it will request if the Client wants to ask for more
      * bottles.
      *
-     * @param wine Wine to buy
      */
-    public void buyWine(Wine wine){
+    void buyWine(){
         int toBuy;
         boolean askForRequest;
         int howMany;
         System.out.println("How many bottles would you like?: ");
         toBuy = scan.nextInt();
         if (isLogged()){
-            if (wine.getProduced() < toBuy){
-                System.out.println("We're sorry, there are only " + wine.getProduced() + " bottles available!");
+            if (Main.cartList.get(0).getProduced() < toBuy){
+                System.out.println("We're sorry, there are only " + Main.cartList.get(0).getProduced() + " bottles available!");
                 System.out.println("Do you want to request more bottles? true / false\n");
                 askForRequest = scan.nextBoolean();
                 if (askForRequest) {
                     System.out.println("How many bottles would you like?\n");
                     howMany = scan.nextInt();
-                    Main.requestList.add(new Wine(wine.getName(), wine.getYear(), wine.getTechnical_notes(), wine.getVine(),howMany));
+                    Main.requestList.add(new Wine(Main.cartList.get(0).getName(), Main.cartList.get(0).getYear(), Main.cartList.get(0).getTechnical_notes(), Main.cartList.get(0).getVine(),howMany));
                     System.out.println("Ordered " + howMany + " bottles");
                 }
                 else {
@@ -138,18 +130,18 @@ public class Client extends Person {
                 }
             }
             else {
-                wine.setProduced(wine.getProduced() - toBuy);
-                Main.toBeProcessedList.add(new Wine(wine.getName(), wine.getYear(), wine.getTechnical_notes(), wine.getVine(), toBuy));
+                Main.cartList.get(0).setProduced(Main.cartList.get(0).getProduced() - toBuy);
+                Main.toBeProcessedList.add(new Wine(Main.cartList.get(0).getName(), Main.cartList.get(0).getYear(), Main.cartList.get(0).getTechnical_notes(), Main.cartList.get(0).getVine(), toBuy));
                 System.out.println("Added order to be processed!\n" + Main.toBeProcessedList.toString() + "\n");
-                System.out.println("Here's how many bottles remain:\n" + wine.toString());
-                if (wine.getProduced() == 0){
+                System.out.println("Here's how many bottles remain:\n" + Main.cartList.get(0).toString());
+
+                if (Main.cartList.get(0).getProduced() == 0){
                     System.out.println("Do you want to request more bottles? true / false\n");
                     askForRequest = scan.nextBoolean();
                     if (askForRequest) {
                         System.out.println("How many bottles would you like?\n");
-                        //new Wine(wine.getName(), wine.getYear(), wine.getTechnical_notes(), wine.getVine(),wine.getProduced())
                         howMany = scan.nextInt();
-                        Main.requestList.add(new Wine(wine.getName(), wine.getYear(), wine.getTechnical_notes(), wine.getVine(),howMany));
+                        Main.requestList.add(new Wine(Main.cartList.get(0).getName(), Main.cartList.get(0).getYear(), Main.cartList.get(0).getTechnical_notes(), Main.cartList.get(0).getVine(),howMany));
                         System.out.println("Ordered " + howMany + " bottles");
                     }
                     else {
@@ -162,5 +154,6 @@ public class Client extends Person {
         else {
             System.out.println("You're not logged!");
         }
+        Main.cartList.clear();
     }
 }
