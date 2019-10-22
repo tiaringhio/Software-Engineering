@@ -108,7 +108,7 @@ public class Client extends Person {
      * bottles.
      *
      */
-    void buyWine(){
+    public void buyWine(){
         int toBuy;
         boolean askForRequest;
         int howMany;
