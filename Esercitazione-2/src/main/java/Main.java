@@ -46,13 +46,16 @@ public class Main {
         System.out.print("Created two wines:\n" + wineList.toString() +"\n");
         System.out.println("----------------------------------------------------------------------------------------");
 
+        // The client searches for a wine, decides if he wants to add the item to the cart,
+        // buys a wine, the quantity is decided via user input.
+        // Ff the user requests more bottles than available a message will be displayed.
+
         // Logging the Client in, User input required
         client1.login();
         System.out.println("----------------------------------------------------------------------------------");
 
-        // The searches for a wine, decides if he wants to add the item to the cart,
-        // buys a wine, the quantity is decided via user input
-        // if the user requests more bottles than available a message will be displayed
+        client1.search("Nebbiolo", 2005);
+        System.out.println("----------------------------------------------------------------------------------------");
         client1.buyWine();
         System.out.println("----------------------------------------------------------------------------------------");
         employee1.shipOrder();
@@ -61,8 +64,7 @@ public class Main {
         // The client will buy every bottle of wine available, the quantity is decided via user input
         client2.login();
         System.out.println("----------------------------------------------------------------------------------");
-        // The client searches a Wine
-        client1.search("Chianti", 2007);
+        client2.search("Chianti", 2007);
         System.out.println("----------------------------------------------------------------------------------------");
         client2.buyWine();
         System.out.println("----------------------------------------------------------------------------------------");
@@ -72,7 +74,7 @@ public class Main {
         // The client will request more bottles of wine, since Client 2 has bought everything
         client3.login();
         System.out.println("----------------------------------------------------------------------------------------");
-        client1.search("Chianti", 2007);
+        client3.search("Chianti", 2007);
         System.out.println("----------------------------------------------------------------------------------------");
         client3.buyWine();
         System.out.println("----------------------------------------------------------------------------------------");
