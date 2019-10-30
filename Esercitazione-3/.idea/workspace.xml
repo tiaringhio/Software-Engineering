@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1cefa3e1-3440-4b1e-9c2a-c804c70e5dbc" name="Default Changelist" comment="Initial commit:&#10; - Created classes">
-      <change beforePath="$PROJECT_DIR$/../Esercitazione-2/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Esercitazione-2/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Administrator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Employee.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Leader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Officer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Workplace.java" beforeDir="false" />
+    <list default="true" id="48cbf3a9-f7f0-4453-83bb-0d325bd90fb9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Administrator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Employee.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Leader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Officer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Workplace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,19 +24,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="Mattia Ricci &lt;37662752+tiaringhio@users.noreply.github.com&gt;" />
-      </list>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="IgnoredFileRootStore">
-    <option name="generatedRoots">
-      <set>
-        <option value="C:\Users\Mattia\Google Drive\Università\3 Anno\Ingegneria del software\Esercizi\Software Engineering\Esercitazione-3\.idea" />
-      </set>
-    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -52,7 +33,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectId" id="1SsbNO0WufFfRzEiTjlJVbFTkLW" />
+  <component name="ProjectId" id="1SvYhwKxnsF6rf2sPw1QE0oS4B5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -83,13 +64,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1cefa3e1-3440-4b1e-9c2a-c804c70e5dbc" name="Default Changelist" comment="" />
-      <created>1572355210149</created>
+      <changelist id="48cbf3a9-f7f0-4453-83bb-0d325bd90fb9" name="Default Changelist" comment="" />
+      <created>1572445659034</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1572355210149</updated>
-      <workItem from="1572355218218" duration="2202000" />
-      <workItem from="1572444239093" duration="1207000" />
+      <updated>1572445659034</updated>
+      <workItem from="1572445667244" duration="417000" />
     </task>
     <servers />
   </component>
@@ -101,9 +81,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
