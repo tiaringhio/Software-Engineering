@@ -4,15 +4,21 @@ public class Leader extends Employee {
     String username;
     String password;
 
-    public Leader(String name, String surname, String fiscalCode, Workplace workplace, String job, Date startingDate, Date endingDate) {
-        super(name, surname, fiscalCode, workplace, job, startingDate, endingDate);
+    /**
+     * The constructor
+     *
+     * @param name
+     * @param surname
+     * @param fiscalCode
+     * @param workplace
+     * @param job
+     * @param startingDate
+     * @param endingDate
+     */
+    public Leader(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate) {
+        super(id, name, surname, fiscalCode, workplace, job, startingDate, endingDate);
     }
 
-    public Leader(String name, String surname, String fiscalCode, Workplace workplace, String job, Date startingDate, Date endingDate, String username, String password) {
-        super(name, surname, fiscalCode, workplace, job, startingDate, endingDate);
-        this.username = username;
-        this.password = password;
-    }
 
     public String getUsername() {
         return username;

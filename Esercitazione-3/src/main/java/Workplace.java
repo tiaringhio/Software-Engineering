@@ -22,4 +22,10 @@ public class Workplace {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String printWorkplace() {
+        return "(" +
+                "Name ='" + getName() + "'" +
+                ", Address ='" + getAddress() + "'" + ")";
+    }
 }

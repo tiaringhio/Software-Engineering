@@ -9,5 +9,6 @@
         <module name="Esercitazione-3" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="9" />
   </component>
 </project>
