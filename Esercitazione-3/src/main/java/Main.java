@@ -36,7 +36,7 @@ public class Main {
 
         Employee employee1 = new Employee(0,"Mattia", "Ricci", generateFiscalCode.generateRandom(16), workplace1, "Employee", "25/05/19", "25/05/20");
         Officer officer1 = new Officer(1,"Marco", "Rossi", generateFiscalCode.generateRandom(16), workplace1, "Officer", "22/04/18", "22/04/20", "mark", "pass");
-        Leader leader1 = new Leader(2, "Giorgio", "Vanni", generateFiscalCode.generateRandom(16), workplace2, "Leader", "22/01/18", "22/01/20");
+        Leader leader1 = new Leader(2, "Giorgio", "Vanni", generateFiscalCode.generateRandom(16), workplace2, "Leader", "22/01/18", "22/01/20", "giorgino", "pass");
         //System.out.println("Employee:\n" + employee1.printEmployee());
         //System.out.println("Officer:\n" + officer1.toString());
 
@@ -51,5 +51,9 @@ public class Main {
         officer1.updateEmployee(employee1);
         System.out.println("\n----------------------------------------------------------------------------------------");
         System.out.println("Here's the existent employees:\n" + Server.Employees.toString());
+        System.out.println("\n----------------------------------------------------------------------------------------");
+        leader1.login();
+        System.out.println("\n----------------------------------------------------------------------------------------");
+        leader1.searchEmployee();
     }
 }

@@ -8,7 +8,7 @@ public class Officer extends Employee {
 
     /**
      * The constructor
-     * 
+     *
      * @param id
      * @param name
      * @param surname

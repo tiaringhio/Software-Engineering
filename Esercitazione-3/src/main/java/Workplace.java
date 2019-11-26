@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Workplace {
     String name;
     String address;
@@ -23,9 +25,14 @@ public class Workplace {
         this.address = address;
     }
 
-    public String printWorkplace() {
+    /**
+     * Prints Workpl
+     * @return
+     */
+    @Override
+    public String toString() {
         return "(" +
-                "Name ='" + getName() + "'" +
-                ", Address ='" + getAddress() + "'" + ")";
+                "Name = '" + getName() + "'" +
+                ", Address = '" + getAddress() + "'" + ")";
     }
 }
