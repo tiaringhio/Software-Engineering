@@ -4,13 +4,6 @@ import java.util.Date;
  * Employee class
  */
 public class Employee {
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     int id;
     String name;
@@ -42,6 +35,14 @@ public class Employee {
         this.job = job;
         this.startingDate = startingDate;
         this.endingDate = endingDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**

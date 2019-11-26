@@ -2,12 +2,13 @@ import java.util.Scanner;
 
 public class Officer extends Employee {
     Scanner scanner = new Scanner(System.in);
+    private boolean logged;
     String username;
     String password;
 
     /**
      * The constructor
-     *
+     * 
      * @param id
      * @param name
      * @param surname
@@ -16,11 +17,32 @@ public class Officer extends Employee {
      * @param job
      * @param startingDate
      * @param endingDate
+     * @param username
+     * @param password
      */
-    public Officer(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate) {
+    public Officer(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate, String username, String password) {
         super(id, name, surname, fiscalCode, workplace, job, startingDate, endingDate);
+        this.username = username;
+        this.password = password;
     }
 
+    /**
+     * logged Getter
+     *
+     * @return boolean
+     */
+    public boolean isLogged() {
+        return logged;
+    }
+
+    /**
+     * logged Setter
+     *
+     * @param logged
+     */
+    public void setLogged(boolean logged) {
+        this.logged = logged;
+    }
 
     /**
      * username Getter
@@ -59,71 +81,110 @@ public class Officer extends Employee {
     }
 
     /**
-     * Checks that the fiscal code is unique
+     * Logs the Officer in, if the data input is wrong it gives the Officer another chance
+     */
+    public void login(){
+        String logUser;
+        String logPassword;
+        System.out.println("Insert user and password\n");
+        logUser = scanner.next();
+        logPassword = scanner.next();
+        while (!isLogged()){
+            if(this.username.equals(logUser) && this.password.equals(logPassword)) {
+                System.out.println("Welcome back!");
+                setLogged(true);
+            }
+            else {
+                System.out.println("Woops, wrong data!");
+                System.out.println("Insert user and password");
+                logUser = scanner.next();
+                logPassword = scanner.next();
+            }
+        }
+    }
+    /**
+     * Checks that the fiscal code is unique, the Officer must be logged
      *
      * @param employee
      * @return
      */
     public boolean checkFiscalCode(Employee employee) {
         String checkFiscalCode;
-        if (!Server.Employees.isEmpty()) {
-            for (Employee emp : Server.Employees) {
-                checkFiscalCode = emp.getFiscalCode();
-                if (checkFiscalCode.equals(employee.getFiscalCode())) {
-                    System.out.println("Fiscal code must me unique");
-                    return true;
-                } else {
-                    return false;
+        if (isLogged()) {
+            if (!Server.Employees.isEmpty()) {
+                for (Employee emp : Server.Employees) {
+                    checkFiscalCode = emp.getFiscalCode();
+                    if (checkFiscalCode.equals(employee.getFiscalCode())) {
+                        System.out.println("Fiscal code must me unique");
+                        return true;
+                    } else {
+                        return false;
+                    }
                 }
             }
+            return false;
+        }
+        else {
+            System.out.println("You have to login first!");
         }
         return false;
     }
+
     /**
      * Adds an Employee, checking first if there an employee with the same fiscal code
      */
     public void insertEmployee(Employee employee) {
-        if (!checkFiscalCode(employee)) {
-            Server.Employees.add(employee);
-            System.out.println("Employee added!");
+        if (isLogged()) {
+            if (!checkFiscalCode(employee)) {
+                Server.Employees.add(employee);
+                System.out.println("Employee added!\n" + employee.toString());
+            }
+            else {
+                System.out.println("There are no employees");
+            }
         }
         else {
-            System.out.println("There are no employees");
+            System.out.println("You have to login first!");
         }
     }
 
     /**
-     * Updates and Employee
+     * Updates and Employee, gets the new data from user input
      */
     public void updateEmployee(Employee employee){
         String newName;
         String newSurname;
         String newJob;
-        if (!Server.Employees.isEmpty()){
-            int searchId;
-            System.out.println("Employee ID: ");
-            searchId = scanner.nextInt();
-            boolean found = false;
-            for (int i = 0; i <= Server.Employees.size(); i++){
-                if (searchId == Server.Employees.get(i).getId()) {
-                    found = true;
-                    System.out.println("New name: ");
-                    newName = scanner.next();
-                    employee.setName(newName);
-                    System.out.println("New surname: ");
-                    newSurname = scanner.next();
-                    employee.setSurname(newSurname);
-                    System.out.println("New job: ");
-                    newJob = scanner.next();
-                    employee.setJob(newJob);
-                    break;
-                }
+        if (isLogged()) {
+            if (!Server.Employees.isEmpty()){
+                int searchId;
+                System.out.println("Employee ID: ");
+                searchId = scanner.nextInt();
+                boolean found = false;
+                for (int i = 0; i <= Server.Employees.size(); i++){
+                    if (searchId == Server.Employees.get(i).getId()) {
+                        found = true;
+                        System.out.println("New name: ");
+                        newName = scanner.next();
+                        employee.setName(newName);
+                        System.out.println("New surname: ");
+                        newSurname = scanner.next();
+                        employee.setSurname(newSurname);
+                        System.out.println("New job: ");
+                        newJob = scanner.next();
+                        employee.setJob(newJob);
+                        break;
+                    }
 
+                }
+                if (!found) System.out.println("I can't find the employee you're looking for");
             }
-            if (!found) System.out.println("I can't find the employee you're looking for");
+            else {
+                System.out.println("There are no employees");
+            }
         }
         else {
-            System.out.println("There are no employees");
+            System.out.println("You have to login first!");
         }
     }
 }
