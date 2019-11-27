@@ -1,6 +1,13 @@
+import java.io.*;
+import java.net.Socket;
 import java.util.Scanner;
 
-public class Officer extends Employee {
+public class Officer extends Employee implements Serializable {
+
+    Socket socket;
+    //BufferedInputStream bufferedInputStream;
+    ObjectOutputStream objectOutputStream;
+    ObjectInputStream objectInputStream;
     Scanner scanner = new Scanner(System.in);
     private boolean logged;
     String username;
@@ -20,10 +27,15 @@ public class Officer extends Employee {
      * @param username
      * @param password
      */
-    public Officer(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate, String username, String password) {
+    public Officer(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate, String username, String password, Socket socket) throws IOException {
         super(id, name, surname, fiscalCode, workplace, job, startingDate, endingDate);
         this.username = username;
         this.password = password;
+        this.socket = socket;
+
+        //bufferedInputStream = new BufferedInputStream(socket.getInputStream());
+        //objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+        //objectInputStream = new ObjectInputStream(socket.getInputStream());
     }
 
     /**
@@ -87,10 +99,10 @@ public class Officer extends Employee {
         String logUser;
         String logPassword;
         System.out.println("Insert user and password\n");
-        logUser = scanner.next();
-        logPassword = scanner.next();
+        logUser = scanner.nextLine();
+        logPassword = scanner.nextLine();
         while (!isLogged()){
-            if(this.username.equals(logUser) && this.password.equals(logPassword)) {
+            if (this.username.equals(logUser) && this.password.equals(logPassword)) {
                 System.out.println("Welcome back!");
                 setLogged(true);
             }
@@ -102,6 +114,7 @@ public class Officer extends Employee {
             }
         }
     }
+
     /**
      * Checks that the fiscal code is unique, the Officer must be logged
      *
@@ -133,16 +146,27 @@ public class Officer extends Employee {
     /**
      * Adds an Employee, checking first if there an employee with the same fiscal code
      */
-    public void insertEmployee(Employee employee) {
-        if (isLogged()) {
-            if (!checkFiscalCode(employee)) {
-                Server.Employees.add(employee);
-                System.out.println("Employee added!\n" + employee.toString());
-            }
-            else {
-                System.out.println("There are no employees");
-            }
+    public void insertEmployee(Employee employee) throws IOException {
+        Send send = new Send("checkFiscalCode", employee);
+        String serverResult;
+        if (objectOutputStream == null){
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         }
+        if (isLogged()) {
+            objectOutputStream.writeObject(send);
+            objectOutputStream.flush();
+            if(objectInputStream == null){
+                objectInputStream = new ObjectInputStream(socket.getInputStream());
+            }
+            serverResult = objectInputStream.readUTF();
+            if (serverResult.equals("false")) {
+                objectOutputStream.writeUTF("insertEmployee");
+                objectOutputStream.flush();
+                objectOutputStream.writeObject(employee);
+                objectOutputStream.flush();
+                System.out.println("Employee added!\n" + employee.toString());
+                }
+            }
         else {
             System.out.println("You have to login first!");
         }

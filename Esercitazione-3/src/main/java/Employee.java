@@ -1,9 +1,10 @@
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Employee class
  */
-public class Employee {
+public class Employee implements Serializable {
 
     int id;
     String name;

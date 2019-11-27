@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Workplace {
+public class Workplace implements Serializable {
     String name;
     String address;
 
