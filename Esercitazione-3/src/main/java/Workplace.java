@@ -27,7 +27,7 @@ public class Workplace implements Serializable {
     }
 
     /**
-     * Prints Workpl
+     * Prints Workplace
      * @return
      */
     @Override

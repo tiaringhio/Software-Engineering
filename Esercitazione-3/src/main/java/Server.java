@@ -8,8 +8,7 @@ public class Server {
     // Server port
     private static final int SPORT = 4444;
 
-    public static ArrayList<Employee> Employees = new ArrayList<>();
-    public static ArrayList<Workplace> Workplaces = new ArrayList<>();
+    ArrayList<Employee> Employees = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
 
     public void reply(){
@@ -18,13 +17,14 @@ public class Server {
             ServerSocket serverSocket = new ServerSocket(SPORT);
             Socket clientSocket = serverSocket.accept();
 
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             ObjectInputStream objectInputStream = new ObjectInputStream(clientSocket.getInputStream());
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(clientSocket.getOutputStream());
             //PrintWriter printWriter = new PrintWriter(clientSocket.getOutputStream(), true);
             //Scanner scanner = new Scanner(clientSocket.getInputStream());
             boolean exit = false;
-            Send send = (Send) objectInputStream.readObject();
+            Send send;
             while (!exit) {
+                send = (Send) objectInputStream.readObject();
                 switch (send.command) {
                     case "checkFiscalCode":
                         String fiscalCode = send.getEmployee().getFiscalCode();
@@ -33,8 +33,12 @@ public class Server {
                         objectOutputStream.flush();
                         break;
                     case "insertEmployee":
-                        Employee employee = (Employee) objectInputStream.readObject();
+                        Employee employee = send.getEmployee();
                         insertEmployee(employee);
+                        break;
+                    case "printEmployees":
+                        objectOutputStream.writeObject(Employees);
+                        objectOutputStream.flush();
                         break;
                     case "exit":
                         exit = true;
@@ -71,6 +75,9 @@ public class Server {
         Employees.add(employee);
     }
 
+ /*   public static ArrayList<Employee> getEmployees(){
+        return Employees;
+    }*/
     public static void main(final String[] v){
         new Server().reply();
     }
