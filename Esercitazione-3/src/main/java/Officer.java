@@ -7,7 +7,7 @@ public class Officer extends Employee implements Serializable {
     private static Socket socket;
     private static ObjectOutputStream objectOutputStream;
     private static ObjectInputStream objectInputStream;
-    private static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
     private boolean logged;
     private String username;
     private String password;
@@ -38,7 +38,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @return boolean
      */
-    private boolean isLogged() {
+    boolean isLogged() {
         return logged;
     }
 

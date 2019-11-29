@@ -11,7 +11,7 @@ class Leader extends Officer {
     /**
      * Searches employee in a selected workplace
      */
-    /*public void searchEmployee() {
+    public void searchEmployee() {
         int counter = 0;
         String searchWorkplace;
         System.out.println("Workplace to search: ");
@@ -23,5 +23,5 @@ class Leader extends Officer {
                 }
             }
         }
-    }*/
+    }
 }
