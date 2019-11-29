@@ -1,33 +1,29 @@
 import java.io.Serializable;
-import java.util.Date;
 
-/**
- * Employee class
- */
 public class Employee implements Serializable {
 
-    int id;
-    String name;
-    String surname;
-    String fiscalCode;
-    Workplace workplace;
-    String job;
-    String startingDate;
-    String endingDate;
+    private int id;
+    private String name;
+    private String surname;
+    private String fiscalCode;
+    private Workplace workplace;
+    private String job;
+    private String startingDate;
+    private String endingDate;
 
     /**
      * The constructor
      *
-     * @param id
-     * @param name
-     * @param surname
-     * @param fiscalCode
-     * @param workplace
-     * @param job
-     * @param startingDate
-     * @param endingDate
+     * @param id Employee's id
+     * @param name Employee's name
+     * @param surname Employee's surname
+     * @param fiscalCode Employee's fiscal code
+     * @param workplace Employee's workplace
+     * @param job Employee's job
+     * @param startingDate Employee's starting date
+     * @param endingDate Employee's ending date
      */
-    public Employee(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate) {
+    Employee(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -38,10 +34,19 @@ public class Employee implements Serializable {
         this.endingDate = endingDate;
     }
 
-    public int getId() {
+    /**
+     * id Getter
+     * @return Employee's id
+     */
+    int getId() {
         return id;
     }
 
+    /**
+     * id Setter
+     *
+     * @param id Employee's id
+     */
     public void setId(int id) {
         this.id = id;
     }
@@ -51,7 +56,7 @@ public class Employee implements Serializable {
      *
      * @return String
      */
-    public String getName() {
+    private String getName() {
         return name;
     }
 
@@ -60,7 +65,7 @@ public class Employee implements Serializable {
      *
      * @param name Employee's name
      */
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
     }
 
@@ -69,7 +74,7 @@ public class Employee implements Serializable {
      *
      * @return String
      */
-    public String getSurname() {
+    private String getSurname() {
         return surname;
     }
 
@@ -78,7 +83,7 @@ public class Employee implements Serializable {
      *
      * @param surname Employee's surname
      */
-    public void setSurname(String surname) {
+    void setSurname(String surname) {
         this.surname = surname;
     }
 
@@ -87,7 +92,7 @@ public class Employee implements Serializable {
      *
      * @return String
      */
-    public String getFiscalCode() {
+    String getFiscalCode() {
         return fiscalCode;
     }
 
@@ -96,7 +101,7 @@ public class Employee implements Serializable {
      *
      * @param fiscalCode Employee's fiscalCode
      */
-    public void setFiscalCode(String fiscalCode) {
+    void setFiscalCode(String fiscalCode) {
         this.fiscalCode = fiscalCode;
     }
 
@@ -105,7 +110,7 @@ public class Employee implements Serializable {
      *
      * @return Workplace
      */
-    public Workplace getWorkplace() {
+    Workplace getWorkplace() {
         return workplace;
     }
 
@@ -123,7 +128,7 @@ public class Employee implements Serializable {
      *
      * @return String
      */
-    public String getJob() {
+    private String getJob() {
         return job;
     }
 
@@ -132,7 +137,7 @@ public class Employee implements Serializable {
      *
      * @param job Employee's job
      */
-    public void setJob(String job) {
+    void setJob(String job) {
         this.job = job;
     }
 
@@ -160,7 +165,7 @@ public class Employee implements Serializable {
      *
      * @return String
      */
-    public String getEndingDate() {
+    private String getEndingDate() {
         return endingDate;
     }
 
@@ -175,6 +180,7 @@ public class Employee implements Serializable {
 
     /**
      * Prints Employee's data in a clean way
+     *
      * @return String
      */
     @Override
@@ -186,6 +192,6 @@ public class Employee implements Serializable {
                 ", Workplace ='" + workplace.getName() + " - " + workplace.getAddress() +"'" +
                 ", Job ='" + getJob() + "'" +
                 ", Starting Date ='" + getStartingDate() + "'" +
-                ", Ending Date ='" + getEndingDate() + "'" + ")";
+                ", Ending Date ='" + getEndingDate() + "'" + ")\n";
     }
 }

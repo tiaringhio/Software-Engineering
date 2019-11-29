@@ -34,8 +34,6 @@ public class Main {
         int port = 4444;
         Socket socket = new Socket(serverIP, port);
 
-        //ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-
         Workplace workplace1 = new Workplace("Parma", "Via Mazzini, 25, 43121, Parma");
         Workplace workplace2 = new Workplace("Milano", "Via Nobili, 14, 20019, Milano");
 
@@ -43,24 +41,21 @@ public class Main {
         Officer officer1 = new Officer(1,"Marco", "Rossi", generateFiscalCode.generateRandom(16), workplace1, "Officer", "22/04/18", "22/04/20", "mark", "pass", socket);
         Leader leader1 = new Leader(2, "Giorgio", "Vanni", generateFiscalCode.generateRandom(16), workplace2, "Leader", "22/01/18", "22/01/20", "giorgino", "pass", socket);
         Leader leader2 = new Leader(3, "Luca", "Vanni", generateFiscalCode.generateRandom(16), workplace2, "Leader", "22/01/18", "22/01/20", "giorgino", "pass", socket);
-        //System.out.println("Employee:\n" + employee1.printEmployee());
-        //System.out.println("Officer:\n" + officer1.toString());
 
         officer1.login();
         System.out.println("\n----------------------------------------------------------------------------------------\n");
+        officer1.insertEmployee(employee1);
+        System.out.println("\n----------------------------------------------------------------------------------------\n");
         officer1.insertEmployee(leader1);
         System.out.println("\n----------------------------------------------------------------------------------------\n");
-        officer1.insertEmployee(leader2);
-        System.out.println("\n----------------------------------------------------------------------------------------\n");
-        //System.out.println("Here's the existent employees:\n" + Server.Employees.toString());
         officer1.printEmployees();
         System.out.println("\n----------------------------------------------------------------------------------------");
-        //officer1.updateEmployee(employee1);
+        officer1.updateEmployee(leader2);
         System.out.println("\n----------------------------------------------------------------------------------------");
-        //System.out.println("Here's the existent employees:\n" + Server.Employees.toString());
+        officer1.printEmployees();
         System.out.println("\n----------------------------------------------------------------------------------------");
-        leader1.login();
-        System.out.println("\n----------------------------------------------------------------------------------------");
+        /*leader1.login();
+        System.out.println("\n----------------------------------------------------------------------------------------");*/
         //leader1.searchEmployee();
         socket.close();
     }

@@ -1,42 +1,36 @@
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Officer extends Employee implements Serializable {
 
-    static Socket socket;
-    //BufferedInputStream bufferedInputStream;
-    static ObjectOutputStream objectOutputStream;
-    static ObjectInputStream objectInputStream;
-    static Scanner scanner = new Scanner(System.in);
+    private static Socket socket;
+    private static ObjectOutputStream objectOutputStream;
+    private static ObjectInputStream objectInputStream;
+    private static Scanner scanner = new Scanner(System.in);
     private boolean logged;
-    String username;
-    String password;
+    private String username;
+    private String password;
 
     /**
      * The constructor
      *
-     * @param id
-     * @param name
-     * @param surname
-     * @param fiscalCode
-     * @param workplace
-     * @param job
-     * @param startingDate
-     * @param endingDate
-     * @param username
-     * @param password
+     * @param id Officer's id
+     * @param name Officer's name
+     * @param surname Officer's surname
+     * @param fiscalCode Officer's fiscal code
+     * @param workplace Officer's workplace
+     * @param job Officer's job
+     * @param startingDate Officer's starting date
+     * @param endingDate  Officer's ending date
+     * @param username Officer's username
+     * @param password Officer's password
      */
-    public Officer(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate, String username, String password, Socket socket) throws IOException {
+    Officer(int id, String name, String surname, String fiscalCode, Workplace workplace, String job, String startingDate, String endingDate, String username, String password, Socket socket) throws IOException {
         super(id, name, surname, fiscalCode, workplace, job, startingDate, endingDate);
         this.username = username;
         this.password = password;
-        this.socket = socket;
-
-        //bufferedInputStream = new BufferedInputStream(socket.getInputStream());
-        //objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
-        //objectInputStream = new ObjectInputStream(socket.getInputStream());
+        Officer.socket = socket;
     }
 
     /**
@@ -44,7 +38,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @return boolean
      */
-    public boolean isLogged() {
+    private boolean isLogged() {
         return logged;
     }
 
@@ -53,7 +47,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @param logged
      */
-    public void setLogged(boolean logged) {
+    private void setLogged(boolean logged) {
         this.logged = logged;
     }
 
@@ -62,7 +56,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @return String
      */
-    public String getUsername() {
+    private String getUsername() {
         return username;
     }
 
@@ -71,7 +65,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @param username Officer's username
      */
-    public void setUsername(String username) {
+    private void setUsername(String username) {
         this.username = username;
     }
 
@@ -80,7 +74,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @return String
      */
-    public String getPassword() {
+    private String getPassword() {
         return password;
     }
 
@@ -96,7 +90,7 @@ public class Officer extends Employee implements Serializable {
     /**
      * Logs the Officer in, if the data input is wrong it gives the Officer another chance
      */
-    public void login(){
+    void login(){
         String logUser;
         String logPassword;
         System.out.println("Insert user and password\n");
@@ -117,43 +111,19 @@ public class Officer extends Employee implements Serializable {
     }
 
     /**
-     * Checks that the fiscal code is unique, the Officer must be logged
-     *
-     * @param employee
-     * @return
-     */
-    /*public boolean checkFiscalCode(Employee employee) {
-        String checkFiscalCode;
-        if (isLogged()) {
-            if (!Server.Employees.isEmpty()) {
-                for (Employee emp : Server.Employees) {
-                    checkFiscalCode = emp.getFiscalCode();
-                    if (checkFiscalCode.equals(employee.getFiscalCode())) {
-                        System.out.println("Fiscal code must me unique");
-                        return true;
-                    } else {
-                        return false;
-                    }
-                }
-            }
-            return false;
-        }
-        else {
-            System.out.println("You have to login first!");
-        }
-        return false;
-    }*/
-
-    /**
      * Adds an Employee, checking first if there an employee with the same fiscal code
+     *
+     * @param employee The Employee to add
+     * @throws IOException
      */
-    public void insertEmployee(Employee employee) throws IOException {
+    void insertEmployee(Employee employee) throws IOException {
         Send sendFiscal = new Send("checkFiscalCode", employee);
         Send sendInsert = new Send("insertEmployee", employee);
         String serverResult;
         if (objectOutputStream == null){
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         }
+        // I check that the Officer is loggedd
         if (isLogged()) {
             objectOutputStream.writeObject(sendFiscal);
             objectOutputStream.flush();
@@ -174,45 +144,54 @@ public class Officer extends Employee implements Serializable {
 
     /**
      * Updates and Employee, gets the new data from user input
+     *
+     * @param employee The Employee to modify
+     * @throws IOException
      */
-    /*public void updateEmployee(Employee employee){
+    void updateEmployee(Employee employee) throws IOException {
         String newName;
         String newSurname;
         String newJob;
+        Send sendUpdate = new Send("updateEmployee", employee);
+        if (objectOutputStream == null) {
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+        }
+        // I check that the Officer is logged
         if (isLogged()) {
-            if (!Server.Employees.isEmpty()){
-                int searchId;
-                System.out.println("Employee ID: ");
-                searchId = scanner.nextInt();
-                boolean found = false;
-                for (int i = 0; i <= Server.Employees.size(); i++){
-                    if (searchId == Server.Employees.get(i).getId()) {
-                        found = true;
-                        System.out.println("New name: ");
-                        newName = scanner.next();
-                        employee.setName(newName);
-                        System.out.println("New surname: ");
-                        newSurname = scanner.next();
-                        employee.setSurname(newSurname);
-                        System.out.println("New job: ");
-                        newJob = scanner.next();
-                        employee.setJob(newJob);
-                        break;
-                    }
-
-                }
-                if (!found) System.out.println("I can't find the employee you're looking for");
-            }
-            else {
-                System.out.println("There are no employees");
-            }
+            objectOutputStream.writeObject(sendUpdate);
+            /*
+             * I get the name via user input the i send it to the Server
+             */
+            System.out.println("New name: ");
+            newName = scanner.next();
+            objectOutputStream.writeUTF(newName);
+            /*
+             * I get the surname via user input the i send it to the Server
+             */
+            System.out.println("New surname: ");
+            newSurname = scanner.next();
+            objectOutputStream.writeUTF(newSurname);
+            /*
+             * I get the job via user input the i send it to the Server
+             */
+            System.out.println("New job: ");
+            newJob = scanner.next();
+            objectOutputStream.writeUTF(newJob);
         }
         else {
             System.out.println("You have to login first!");
         }
-    }*/
-    public void printEmployees() throws IOException, ClassNotFoundException {
-        Send send = new Send("printEmployees", null);
-        System.out.println(objectInputStream.readObject().toString());
+    }
+
+    /**
+     * This method prints the Employees list defined in Server
+     *
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    void printEmployees() throws IOException, ClassNotFoundException {
+        Send sendPrint = new Send("printEmployees", null);
+        objectOutputStream.writeObject(sendPrint);
+        System.out.println("Here are the existent employees:\n" + objectInputStream.readObject().toString());
     }
 }
