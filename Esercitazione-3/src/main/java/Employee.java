@@ -128,7 +128,7 @@ public class Employee implements Serializable {
      *
      * @return String
      */
-    private String getJob() {
+    String getJob() {
         return job;
     }
 

@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Officer extends Employee implements Serializable {
 
     private static Socket socket;
-    private static ObjectOutputStream objectOutputStream;
-    private static ObjectInputStream objectInputStream;
+     static ObjectOutputStream objectOutputStream;
+     static ObjectInputStream objectInputStream;
     static Scanner scanner = new Scanner(System.in);
     private boolean logged;
     private String username;
@@ -123,7 +123,7 @@ public class Officer extends Employee implements Serializable {
         if (objectOutputStream == null){
             objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         }
-        // I check that the Officer is loggedd
+        // I check that the Officer is logged
         if (isLogged()) {
             objectOutputStream.writeObject(sendFiscal);
             objectOutputStream.flush();
@@ -135,8 +135,11 @@ public class Officer extends Employee implements Serializable {
                 objectOutputStream.writeObject(sendInsert);
                 objectOutputStream.flush();
                 System.out.println("Employee added!\n" + employee.toString());
-                }
             }
+            else {
+                System.out.println("Fiscal code must be unique");
+            }
+        }
         else {
             System.out.println("You have to login first!");
         }

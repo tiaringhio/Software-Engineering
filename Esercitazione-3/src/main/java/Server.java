@@ -2,13 +2,14 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Server {
     // Server port
     private static final int SPORT = 4444;
     // List of existent Employees
     private ArrayList<Employee> Employees = new ArrayList<>();
+    private ArrayList<Employee> searchListLeader = new ArrayList<>();
+    private ArrayList<Employee> searchListAdmin = new ArrayList<>();
 
     public void reply(){
         try {
@@ -45,6 +46,28 @@ public class Server {
                         String newJob = objectInputStream.readUTF();
                         updateEmployee(employee, newName, newSurname, newJob);
                         break;
+                    case "searchEmployeeLeader":
+                        String searchEmployeeLeader = objectInputStream.readUTF();
+                        boolean searchResultLeader = searchEmployeeLeader(searchEmployeeLeader);
+                        objectOutputStream.writeUTF(String.valueOf(searchResultLeader));
+                        objectOutputStream.flush();
+                        objectOutputStream.writeInt(searchListLeader.size());
+                        objectOutputStream.flush();
+                        objectOutputStream.writeObject(searchListLeader);
+                        objectOutputStream.flush();
+                        objectOutputStream.reset();
+                        break;
+                    case "searchEmployeeAdmin":
+                        String searchWorkplaceAdmin = objectInputStream.readUTF();
+                        boolean searchResultAdmin = searchEmployeeAdmin(searchWorkplaceAdmin);
+                        objectOutputStream.writeUTF(String.valueOf(searchResultAdmin));
+                        objectOutputStream.flush();
+                        objectOutputStream.writeInt(searchListAdmin.size());
+                        objectOutputStream.flush();
+                        objectOutputStream.writeObject(searchListAdmin);
+                        objectOutputStream.flush();
+                        objectOutputStream.reset();
+                        break;
                     case "exit":
                         exit = true;
                         break;
@@ -71,12 +94,7 @@ public class Server {
         if (!Employees.isEmpty()) {
             for (Employee emp : Employees) {
                 checkFiscalCode = emp.getFiscalCode();
-                if (checkFiscalCode.equals(fiscalCode)) {
-                    System.out.println("Fiscal code must be unique");
-                    return true;
-                } else {
-                    return false;
-                }
+                return checkFiscalCode.equals(fiscalCode);
             }
         }
         return false;
@@ -115,6 +133,43 @@ public class Server {
         else {
             System.out.println("There are no employees");
         }
+    }
+
+    /**
+     * Searches employee in a selected workplace, Administrators are not included in the search results
+     *
+     * @param searchEmployeeLeader the workplace to search
+     * @return true if found some employee, false otherwise
+     */
+     private boolean searchEmployeeLeader(String searchEmployeeLeader) {
+        String administrator = "Administrator";
+        int counter = 0;
+        for (Employee employee : Employees) {
+            if (employee.getWorkplace().getName().equals(searchEmployeeLeader) && !employee.getJob().equals(administrator)) {
+                searchListLeader.add(employee);
+                counter++;
+                if (counter == Employees.size()) {
+                    return true;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    private boolean searchEmployeeAdmin(String searchEmployeeAdmin) {
+         for (Employee employee : Employees) {
+             if (employee.getWorkplace().getName().equals(searchEmployeeAdmin)) {
+                 searchListAdmin.add(employee);
+                 return true;
+             }
+             else {
+                 return false;
+             }
+         }
+         return false;
     }
 
     public static void main(final String[] v){
