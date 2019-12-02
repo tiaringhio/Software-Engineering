@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class Officer extends Employee implements Serializable {
 
     private static Socket socket;
-     static ObjectOutputStream objectOutputStream;
-     static ObjectInputStream objectInputStream;
+    static ObjectOutputStream objectOutputStream;
+    static ObjectInputStream objectInputStream;
     static Scanner scanner = new Scanner(System.in);
     private boolean logged;
     private String username;
@@ -93,8 +93,9 @@ public class Officer extends Employee implements Serializable {
     void login(){
         String logUser;
         String logPassword;
-        System.out.println("Insert user and password\n");
+        System.out.println("Insert user:");
         logUser = scanner.nextLine();
+        System.out.println("Insert password:");
         logPassword = scanner.nextLine();
         while (!isLogged()){
             if (this.username.equals(logUser) && this.password.equals(logPassword)) {
@@ -102,10 +103,11 @@ public class Officer extends Employee implements Serializable {
                 setLogged(true);
             }
             else {
-                System.out.println("Woops, wrong data!");
-                System.out.println("Insert user and password");
-                logUser = scanner.next();
-                logPassword = scanner.next();
+                System.out.println("Woops, wrong data!\n");
+                System.out.println("Insert user:");
+                logUser = scanner.nextLine();
+                System.out.println("Insert password:");
+                logPassword = scanner.nextLine();
             }
         }
     }
@@ -130,6 +132,7 @@ public class Officer extends Employee implements Serializable {
             if(objectInputStream == null){
                 objectInputStream = new ObjectInputStream(socket.getInputStream());
             }
+            System.out.println("Adding employee to the list...\n");
             serverResult = objectInputStream.readUTF();
             if (serverResult.equals("false")) {
                 objectOutputStream.writeObject(sendInsert);
@@ -166,20 +169,21 @@ public class Officer extends Employee implements Serializable {
              * I get the name via user input the i send it to the Server
              */
             System.out.println("New name: ");
-            newName = scanner.next();
+            newName = scanner.nextLine();
             objectOutputStream.writeUTF(newName);
             /*
              * I get the surname via user input the i send it to the Server
              */
             System.out.println("New surname: ");
-            newSurname = scanner.next();
+            newSurname = scanner.nextLine();
             objectOutputStream.writeUTF(newSurname);
             /*
              * I get the job via user input the i send it to the Server
              */
             System.out.println("New job: ");
-            newJob = scanner.next();
+            newJob = scanner.nextLine();
             objectOutputStream.writeUTF(newJob);
+            System.out.println("Updating employee...\n");
         }
         else {
             System.out.println("You have to login first!");
@@ -195,6 +199,7 @@ public class Officer extends Employee implements Serializable {
     void printEmployees() throws IOException, ClassNotFoundException {
         Send sendPrint = new Send("printEmployees", null);
         objectOutputStream.writeObject(sendPrint);
+        System.out.println("Getting the existent employees...\n");
         System.out.println("Here are the existent employees:\n" + objectInputStream.readObject().toString());
     }
 }

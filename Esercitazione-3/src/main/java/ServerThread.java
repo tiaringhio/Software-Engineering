@@ -5,8 +5,8 @@ import java.util.Random;
 
 public class ServerThread implements Runnable
 {
-  private static final int MAX = 100;
-  private static final long SLEEPTIME = 200;
+  private static final int minSleepTime = 500;
+  private static final int maxSleepTime = 1500;
 
   private Socket socket;
 
@@ -14,6 +14,7 @@ public class ServerThread implements Runnable
   private ArrayList<Employee> searchListLeader = new ArrayList<>();
   private ArrayList<Employee> searchListAdmin = new ArrayList<>();
 
+  private Random randomThreadSleep = new Random();
   ServerThread(final Server server, final Socket socket) {
     this.socket = socket;
   }
@@ -38,15 +39,18 @@ public class ServerThread implements Runnable
               objectOutputStream.flush();
               break;
             case "insertEmployee":
+              Thread.sleep(randomThreadSleep.nextInt(maxSleepTime) + minSleepTime);
               Employee employee = send.getEmployee();
               insertEmployee(employee);
               break;
             case "printEmployees":
+              Thread.sleep(randomThreadSleep.nextInt(maxSleepTime) + minSleepTime);
               objectOutputStream.writeObject(Employees);
               objectOutputStream.flush();
               objectOutputStream.reset();
               break;
             case "updateEmployee":
+              Thread.sleep(randomThreadSleep.nextInt(maxSleepTime) + minSleepTime);
               employee = send.getEmployee();
               String newName = objectInputStream.readUTF();
               String newSurname = objectInputStream.readUTF();
@@ -56,6 +60,7 @@ public class ServerThread implements Runnable
             case "searchEmployeeLeader":
               String searchEmployeeLeader = objectInputStream.readUTF();
               boolean searchResultLeader = searchEmployeeLeader(searchEmployeeLeader);
+              Thread.sleep(randomThreadSleep.nextInt(maxSleepTime) + minSleepTime);
               objectOutputStream.writeUTF(String.valueOf(searchResultLeader));
               objectOutputStream.flush();
               objectOutputStream.writeInt(searchListLeader.size());
@@ -67,6 +72,7 @@ public class ServerThread implements Runnable
             case "searchEmployeeAdmin":
               String searchWorkplaceAdmin = objectInputStream.readUTF();
               boolean searchResultAdmin = searchEmployeeAdmin(searchWorkplaceAdmin);
+              Thread.sleep(randomThreadSleep.nextInt(maxSleepTime) + minSleepTime);
               objectOutputStream.writeUTF(String.valueOf(searchResultAdmin));
               objectOutputStream.flush();
               objectOutputStream.writeInt(searchListAdmin.size());
@@ -81,7 +87,7 @@ public class ServerThread implements Runnable
           }
         }
       }
-      catch (IOException | ClassNotFoundException e) {
+      catch (IOException | ClassNotFoundException | InterruptedException e) {
         e.printStackTrace();
         System.exit(0);
       }

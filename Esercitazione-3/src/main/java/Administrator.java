@@ -28,7 +28,7 @@ class Administrator extends Leader {
              * I get the workplace name via user input then send the value to the server
              * */
             System.out.println("Workplace to search: ");
-            searchWorkplace = scanner.next();
+            searchWorkplace = scanner.nextLine();
             objectOutputStream.writeUTF(searchWorkplace);
             objectOutputStream.flush();
             /*
@@ -37,6 +37,7 @@ class Administrator extends Leader {
              * or i give an error if the result is false (no employees found)
              * */
             searchResult = objectInputStream.readUTF();
+            System.out.println("Searching selected workplace...\n");
             if (searchResult.equals("true")) {
                 if(objectInputStream == null){
                     objectInputStream = new ObjectInputStream(socket.getInputStream());
