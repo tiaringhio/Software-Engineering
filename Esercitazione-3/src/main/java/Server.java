@@ -145,32 +145,33 @@ public class Server {
         String administrator = "Administrator";
         int counter = 0;
         for (Employee employee : Employees) {
+            counter++;
             if (employee.getWorkplace().getName().equals(searchEmployeeLeader) && !employee.getJob().equals(administrator)) {
                 searchListLeader.add(employee);
-                counter++;
-                if (counter == Employees.size()) {
-                    return true;
-                }
             }
-            else {
-                return false;
+            if (counter == Employees.size()) {
+                return true;
             }
         }
         return false;
     }
 
     private boolean searchEmployeeAdmin(String searchEmployeeAdmin) {
+         int counter = 0;
          for (Employee employee : Employees) {
+             counter++;
              if (employee.getWorkplace().getName().equals(searchEmployeeAdmin)) {
                  searchListAdmin.add(employee);
+
+             }
+             if (counter == Employees.size()) {
                  return true;
              }
-             else {
-                 return false;
-             }
          }
-         return false;
+        return false;
     }
+
+
 
     public static void main(final String[] v){
         new Server().reply();

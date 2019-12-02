@@ -36,11 +36,11 @@ class Administrator extends Leader {
              * then i print the list of employees if the result is true (the server found some employees)
              * or i give an error if the result is false (no employees found)
              * */
-            if(objectInputStream == null){
-                objectInputStream = new ObjectInputStream(socket.getInputStream());
-            }
             searchResult = objectInputStream.readUTF();
             if (searchResult.equals("true")) {
+                if(objectInputStream == null){
+                    objectInputStream = new ObjectInputStream(socket.getInputStream());
+                }
                 System.out.println("There are " + objectInputStream.readInt()+ " employees in the selected workplace, here they are:\n" + objectInputStream.readObject().toString());
             }
             else {
