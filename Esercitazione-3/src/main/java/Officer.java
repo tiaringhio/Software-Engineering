@@ -1,7 +1,10 @@
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
-
+/**
+ * @author Mattia Ricci
+ * @author Riccardo Lo Bue
+ */
 public class Officer extends Employee implements Serializable {
 
     private static Socket socket;
@@ -56,7 +59,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @return String
      */
-    private String getUsername() {
+    String getUsername() {
         return username;
     }
 
@@ -74,7 +77,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @return String
      */
-    private String getPassword() {
+    String getPassword() {
         return password;
     }
 
@@ -90,24 +93,46 @@ public class Officer extends Employee implements Serializable {
     /**
      * Logs the Officer in, if the data input is wrong it gives the Officer another chance
      */
-    void login(){
+    void login(Officer officer) throws IOException {
+        Send sendLogin = new Send("login", officer);
         String logUser;
         String logPassword;
+        String loginResult;
+        if (objectOutputStream == null){
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
+        }
+        objectOutputStream.writeObject(sendLogin);
+        objectOutputStream.flush();
         System.out.println("Insert user:");
         logUser = scanner.nextLine();
+        objectOutputStream.writeUTF(logUser);
+        objectOutputStream.flush();
         System.out.println("Insert password:");
         logPassword = scanner.nextLine();
+        objectOutputStream.writeUTF(logPassword);
+        objectOutputStream.flush();
+        if (objectInputStream == null) {
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+        }
+
         while (!isLogged()){
-            if (this.username.equals(logUser) && this.password.equals(logPassword)) {
+            loginResult = objectInputStream.readUTF();
+            if (loginResult.equals("true")) {
                 System.out.println("Welcome back!");
                 setLogged(true);
             }
             else {
                 System.out.println("Woops, wrong data!\n");
+                objectOutputStream.writeObject(sendLogin);
+                objectOutputStream.flush();
                 System.out.println("Insert user:");
                 logUser = scanner.nextLine();
+                objectOutputStream.writeUTF(logUser);
+                objectOutputStream.flush();
                 System.out.println("Insert password:");
                 logPassword = scanner.nextLine();
+                objectOutputStream.writeUTF(logPassword);
+                objectOutputStream.flush();
             }
         }
     }

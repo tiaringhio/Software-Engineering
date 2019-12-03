@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-public class Server
-{
+/**
+ * @author Mattia Ricci
+ * @author Riccardo Lo Bue
+ */
+public class Server {
   private static final int COREPOOL = 5;
   private static final int MAXPOOL = 100;
   private static final long IDLETIME = 5000;
@@ -18,7 +20,11 @@ public class Server
   private ServerSocket socket;
   private ThreadPoolExecutor pool;
 
-  public Server() throws IOException {
+  /**
+   * Constructor
+   * @throws IOException
+   */
+  private Server() throws IOException {
     this.socket = new ServerSocket(SPORT);
   }
 
@@ -27,15 +33,13 @@ public class Server
 
     while (true) {
       try {
-        Socket clientSocket = this.socket.accept();
-        this.pool.execute(new ServerThread(this, clientSocket));
-
+          Socket clientSocket = this.socket.accept();
+          this.pool.execute(new ServerThread(this, clientSocket));
       }
       catch (Exception e) {
-        break;
+          break;
       }
     }
-
     this.pool.shutdown();
   }
 

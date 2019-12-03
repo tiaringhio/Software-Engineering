@@ -2,9 +2,11 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
-
-public class ServerThread implements Runnable
-{
+/**
+ * @author Mattia Ricci
+ * @author Riccardo Lo Bue
+ */
+public class ServerThread implements Runnable {
   private static final int minSleepTime = 500;
   private static final int maxSleepTime = 1500;
 
@@ -32,6 +34,15 @@ public class ServerThread implements Runnable
         while (!exit) {
           send = (Send) objectInputStream.readObject();
           switch (send.command) {
+            case "login":
+              Officer officer = (Officer) send.getEmployee();
+              String checkUser = objectInputStream.readUTF();
+              String checkPassword = objectInputStream.readUTF();
+              boolean loginResult = login(officer, checkUser, checkPassword);
+              objectOutputStream.writeUTF(String.valueOf(loginResult));
+              objectOutputStream.flush();
+              objectOutputStream.reset();
+              break;
             case "checkFiscalCode":
               String fiscalCode = send.getEmployee().getFiscalCode();
               boolean fiscalResult = checkFiscalCode(fiscalCode);
@@ -92,6 +103,15 @@ public class ServerThread implements Runnable
         System.exit(0);
       }
     }
+  }
+
+
+  /**
+   * Logs the Officer in, if the data input is wrong it gives the Officer another chance
+   * @return true if the input data corresponds to the officer data, false otherwise
+   */
+  private boolean login(Officer officer, String checkUser, String checkPassword) {
+    return checkUser.equals(officer.getUsername()) && checkPassword.equals(officer.getPassword());
   }
 
   /**
@@ -167,6 +187,12 @@ public class ServerThread implements Runnable
     return false;
   }
 
+  /**
+   * Searches employee in a selected workplace, Administrators are included in the search results
+   *
+   * @param searchEmployeeAdmin the workplace to search
+   * @return true if found some employee, false otherwise
+   */
   private boolean searchEmployeeAdmin(String searchEmployeeAdmin) {
     int counter = 0;
     for (Employee employee : Employees) {
