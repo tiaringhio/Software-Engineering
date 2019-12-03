@@ -47,7 +47,7 @@ public class Main {
             Leader leader2 = new Leader(4, "Luca", "Vanni", generateFiscalCode.generateRandom(), workplace2, "Leader", "22/01/18", "22/01/20", "luca", "pass", socket);
             Administrator admin1 = new Administrator(5, "Fabio", "Bianchi", generateFiscalCode.generateRandom(), workplace2,"Administrator", "22/01/18", "22/01/21", "fabio", "pass", socket);
 
-            officer1.login(officer1);
+            officer1.login();
             System.out.println("\n----------------------------------------------------------------------------------------\n");
             officer1.insertEmployee(employee1);
             System.out.println("\n----------------------------------------------------------------------------------------\n");
@@ -67,11 +67,11 @@ public class Main {
             System.out.println("\n----------------------------------------------------------------------------------------\n");
             officer1.printEmployees();
             System.out.println("\n----------------------------------------------------------------------------------------\n");
-            leader1.login(leader1);
+            leader1.login();
             System.out.println("\n----------------------------------------------------------------------------------------\n");
             leader1.searchEmployeeLeader();
             System.out.println("\n----------------------------------------------------------------------------------------\n");
-            admin1.login(admin1);
+            admin1.login();
             System.out.println("\n----------------------------------------------------------------------------------------\n");
             admin1.searchEmployeeAdmin();
             System.out.println("\n----------------------------------------------------------------------------------------\n");
