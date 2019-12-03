@@ -1,5 +1,8 @@
 import java.io.Serializable;
-
+/**
+ * @author Mattia Ricci
+ * @author Riicardo Lo Bue
+ */
 public class Send implements Serializable {
     String command;
     private Employee employee;

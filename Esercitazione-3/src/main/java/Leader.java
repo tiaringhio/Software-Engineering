@@ -3,7 +3,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.net.Socket;
-
+/**
+ * @author Mattia Ricci
+ * @author Riccardo Lo Bue
+ */
 class Leader extends Officer implements Serializable {
 
     private static Socket socket;

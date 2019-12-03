@@ -1,6 +1,8 @@
 import java.io.Serializable;
-import java.util.Arrays;
-
+/**
+ * @author Mattia Ricci
+ * @author Riccardo Lo Bue
+ */
 public class Workplace implements Serializable {
     String name;
     String address;

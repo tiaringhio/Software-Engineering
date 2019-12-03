@@ -1,5 +1,8 @@
 import java.io.Serializable;
-
+/**
+ * @author Mattia Ricci
+ * @author Riccardo Lo Bue
+ */
 public class Employee implements Serializable {
 
     private int id;

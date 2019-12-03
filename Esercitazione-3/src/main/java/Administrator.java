@@ -3,7 +3,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.Date;
-
+/**
+ * @author Mattia Ricci
+ * @author Riccardo Lo Bue
+ */
 class Administrator extends Leader {
 
     private static Socket socket;

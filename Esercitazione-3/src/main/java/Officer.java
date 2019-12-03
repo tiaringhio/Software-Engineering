@@ -1,7 +1,10 @@
 import java.io.*;
 import java.net.Socket;
 import java.util.Scanner;
-
+/**
+ * @author Mattia Ricci
+ * @author Riccardo Lo Bue
+ */
 public class Officer extends Employee implements Serializable {
 
     private static Socket socket;
@@ -56,7 +59,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @return String
      */
-    private String getUsername() {
+    String getUsername() {
         return username;
     }
 
@@ -74,7 +77,7 @@ public class Officer extends Employee implements Serializable {
      *
      * @return String
      */
-    private String getPassword() {
+    String getPassword() {
         return password;
     }
 
@@ -90,26 +93,42 @@ public class Officer extends Employee implements Serializable {
     /**
      * Logs the Officer in, if the data input is wrong it gives the Officer another chance
      */
-    void login(){
+    void login() throws IOException {
+        Send sendLogin = new Send("login", this);
         String logUser;
         String logPassword;
-        System.out.println("Insert user:");
-        logUser = scanner.nextLine();
-        System.out.println("Insert password:");
-        logPassword = scanner.nextLine();
-        while (!isLogged()){
-            if (this.username.equals(logUser) && this.password.equals(logPassword)) {
-                System.out.println("Welcome back!");
-                setLogged(true);
-            }
-            else {
-                System.out.println("Woops, wrong data!\n");
-                System.out.println("Insert user:");
-                logUser = scanner.nextLine();
-                System.out.println("Insert password:");
-                logPassword = scanner.nextLine();
-            }
+        String loginResult = "false";
+        int counter = 0;
+
+        if (objectOutputStream == null){
+            objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
         }
+        if (objectInputStream == null) {
+            objectInputStream = new ObjectInputStream(socket.getInputStream());
+        }
+
+        do {
+            if(counter > 0)
+                System.out.println("Woops, wrong data! Try again!\n");
+
+            objectOutputStream.writeObject(sendLogin);
+            objectOutputStream.flush();
+            System.out.println("Insert user:");
+            logUser = scanner.nextLine();
+            objectOutputStream.writeUTF(logUser);
+            objectOutputStream.flush();
+            System.out.println("Insert password:");
+            logPassword = scanner.nextLine();
+            objectOutputStream.writeUTF(logPassword);
+            objectOutputStream.flush();
+            loginResult = objectInputStream.readUTF();
+
+            counter++;
+        }
+        while (loginResult.equals("false"));
+
+        System.out.println("Welcome back!");
+        setLogged(true);
     }
 
     /**
