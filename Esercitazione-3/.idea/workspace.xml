@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48cbf3a9-f7f0-4453-83bb-0d325bd90fb9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/UML &amp;  Use Case.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Administrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Administrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Leader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Leader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Officer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Officer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Send.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Send.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ServerThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ServerThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Workplace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Workplace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UML.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,6 +115,7 @@
       <workItem from="1575284012189" duration="18150000" />
       <workItem from="1575363341932" duration="1336000" />
       <workItem from="1575375096319" duration="11860000" />
+      <workItem from="1575399564746" duration="654000" />
     </task>
     <servers />
   </component>
