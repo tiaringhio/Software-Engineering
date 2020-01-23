@@ -77,7 +77,10 @@
     </option>
   </component>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -137,6 +140,9 @@
       <workItem from="1575375096319" duration="11860000" />
       <workItem from="1575399564746" duration="654000" />
       <workItem from="1575400867278" duration="670000" />
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     </task>
     <servers />
