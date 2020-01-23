@@ -2,21 +2,21 @@ package wineStore;
 
 import java.sql.*;
 
-public class JdbcDao {
-    // Replace below database url, username and password with your actual database credentials
+public class Database {
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/esercitazione4";
     private static final String DATABASE_USERNAME = "root";
     private static final String DATABASE_PASSWORD = "";
-    private static final String SELECT_QUERY = "SELECT * FROM users WHERE user = ? and password = ?";
+    private static final String REGISTRATION_QUERY = "INSERT INTO users (name, surname, user, password) VALUES (?, ?, ?, ?)";
+    private static final String LOGIN_QUERY = "SELECT * FROM users WHERE user = ? and password = ?";
 
-    public boolean validate(String user, String password) throws SQLException {
+    public boolean login(String userLog, String passwordLog) {
         // Establish connection
         try {
             Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
             // Create a statement using connection object
-            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_QUERY);
-            preparedStatement.setString(1, user);
-            preparedStatement.setString(2, password);
+            PreparedStatement preparedStatement = connection.prepareStatement(LOGIN_QUERY);
+            preparedStatement.setString(1, userLog);
+            preparedStatement.setString(2, passwordLog);
 
             System.out.println(preparedStatement);
 
@@ -25,10 +25,25 @@ public class JdbcDao {
                 return true;
             }
 
-        } catch (SQLException e) {
-            printSQLException(e);
+        } catch (SQLException e_log) {
+            printSQLException(e_log);
         }
         return false;
+    }
+
+    public void register(String name, String surname, String userReg, String passwordReg) {
+        try {
+            Connection connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USERNAME, DATABASE_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(REGISTRATION_QUERY);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, surname);
+            preparedStatement.setString(3, userReg);
+            preparedStatement.setString(4, passwordReg);
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e_reg) {
+            printSQLException(e_reg);
+        }
     }
 
     public static void printSQLException(SQLException ex) {

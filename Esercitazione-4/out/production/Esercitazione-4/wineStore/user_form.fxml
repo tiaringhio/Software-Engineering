@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:controller="wineStore.UserController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="583.0" prefWidth="734.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" style="-fx-background-color: BC2B38;" HBox.hgrow="ALWAYS">
+         <HBox.margin>
+            <Insets right="5.0" />
+         </HBox.margin>
+         <children>
+            <ImageView fitHeight="105.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Resources/wine_white.png" />
+               </image>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 20;" text="Registration">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="nameRegField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Name" style="-fx-background-radius: 0;">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="surnameRegField" layoutX="20.0" layoutY="276.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Surname" style="-fx-background-radius: 0;">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="usernameRegField" layoutX="20.0" layoutY="289.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Username" style="-fx-background-radius: 0;">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="passwordRegField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Password" style="-fx-background-radius: 0;">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </PasswordField>
+            <PasswordField fx:id="confirmRegField" layoutX="96.0" layoutY="379.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Confirm Password" style="-fx-background-radius: 0;">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </PasswordField>
+            <HBox alignment="CENTER_RIGHT" maxWidth="-Infinity" prefWidth="200.0">
+               <children>
+                  <Button fx:id="registerButton" mnemonicParsing="false" onAction="#register" style="-fx-background-color: white; -fx-background-radius: 0;" text="Register" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+      <VBox alignment="CENTER" style="-fx-background-color: BC2B38;" HBox.hgrow="ALWAYS">
+         <HBox.margin>
+            <Insets left="5.0" />
+         </HBox.margin>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: white; -fx-font-size: 20;" text="Login">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="usernameLogField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Username" style="-fx-background-radius: 0;">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <PasswordField fx:id="passwordLogField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="20.0" prefWidth="200.0" promptText="Password" style="-fx-background-radius: 0;" />
+            <HBox alignment="CENTER_RIGHT" maxWidth="-Infinity" prefWidth="200.0">
+               <children>
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" style="-fx-background-color: white; -fx-background-radius: 0;" text="Login" />
+               </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

@@ -2,27 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/99bafc0b-b4c8-49cd-9e00-f63197f2d933.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/99bafc0b-b4c8-49cd-9e00-f63197f2d933/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_8_0_19.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/wine.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Resources/wine_white.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/wineStore/user_form.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml~Stashed changes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml~Updated upstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml~Stashed changes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml~Updated upstream" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Esercitazione-4/META-INF/Esercitazione-4.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Esercitazione-4/META-INF/Esercitazione-4.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Esercitazione-4/sample.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Esercitazione-4/sample/login_form.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/wineStore/login_form.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/wineStore/login_form.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Esercitazione-4/wineStore/login_form.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wineStore/JdbcDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wineStore/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wineStore/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wineStore/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wineStore/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/wineStore/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/wineStore/login_form.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +92,14 @@
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
@@ -113,7 +110,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectId" id="1WnCBH3XsrsPAVIuB6p5PBE4kpu" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
@@ -123,6 +122,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="GoToClass.includeLibraries" value="false" />
@@ -139,6 +139,12 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="C:/Program Files/JetBrains/javafx-sdk-11.0.2/lib" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -230,17 +236,7 @@
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:MySQL" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:MySQL" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@657cc9e8" type="9fbbdea:ServiceModel$ServiceNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -258,7 +254,8 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-      <workItem from="1579775840684" duration="1043000" />
+      <workItem from="1579775840684" duration="4326000" />
+      <workItem from="1579784143813" duration="5250000" />
     </task>
     <servers />
   </component>
@@ -267,6 +264,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
   <component name="WindowStateProjectService">
@@ -278,26 +276,38 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="689" y="325" key="#com.intellij.ide.util.TreeClassChooserDialog/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579776211683" />
+    <state x="497" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1579787016901">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="497" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579787016901" />
+    <state x="690" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1579787584014">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="690" y="288" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579787584014" />
     <state x="687" y="350" key="FileChooserDialogImpl" timestamp="1579776186529">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="687" y="350" key="FileChooserDialogImpl/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579776186529" />
-    <state width="1877" height="294" key="GridCell.Tab.0.bottom" timestamp="1579776900900">
+    <state width="1877" height="274" key="GridCell.Tab.0.bottom" timestamp="1579789402914">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="294" key="GridCell.Tab.0.bottom/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579776900900" />
-    <state width="1877" height="294" key="GridCell.Tab.0.center" timestamp="1579776900900">
+    <state width="1493" height="253" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1579780506695" />
+    <state width="1877" height="274" key="GridCell.Tab.0.bottom/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579789402914" />
+    <state width="1877" height="274" key="GridCell.Tab.0.center" timestamp="1579789402914">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="294" key="GridCell.Tab.0.center/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579776900900" />
-    <state width="1877" height="294" key="GridCell.Tab.0.left" timestamp="1579776900900">
+    <state width="1493" height="253" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1579780506695" />
+    <state width="1877" height="274" key="GridCell.Tab.0.center/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579789402914" />
+    <state width="1877" height="274" key="GridCell.Tab.0.left" timestamp="1579789402914">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="294" key="GridCell.Tab.0.left/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579776900900" />
-    <state width="1877" height="294" key="GridCell.Tab.0.right" timestamp="1579776900900">
+    <state width="1493" height="253" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1579780506695" />
+    <state width="1877" height="274" key="GridCell.Tab.0.left/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579789402914" />
+    <state width="1877" height="274" key="GridCell.Tab.0.right" timestamp="1579789402914">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="294" key="GridCell.Tab.0.right/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579776900900" />
+    <state width="1493" height="253" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1579780506695" />
+    <state width="1877" height="274" key="GridCell.Tab.0.right/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579789402914" />
     <state x="461" y="183" key="SettingsEditor" timestamp="1579776892837">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
@@ -306,5 +316,19 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="685" y="502" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.1080.1536.864/0.0.1920.1080@0.0.1920.1080" timestamp="1579776887884" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/wineStore/UserController.java</url>
+          <line>88</line>
+          <properties class="wineStore.UserController" method="login">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
