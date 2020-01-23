@@ -76,6 +76,29 @@
       </list>
     </option>
   </component>
+<<<<<<< Updated upstream
+=======
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Esercitazione-3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Server" />
+      <module name="Esercitazione-3" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Main" />
+    </list>
+  </component>
+>>>>>>> Stashed changes
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -85,9 +108,36 @@
       <created>1572355210149</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< Updated upstream
       <updated>1572355210149</updated>
       <workItem from="1572355218218" duration="2202000" />
       <workItem from="1572444239093" duration="553000" />
+=======
+      <updated>1572445659034</updated>
+      <workItem from="1572445667244" duration="894000" />
+      <workItem from="1572956078754" duration="4063000" />
+      <workItem from="1573997769492" duration="240000" />
+      <workItem from="1574166186154" duration="7596000" />
+      <workItem from="1574244751203" duration="1250000" />
+      <workItem from="1574769393641" duration="10831000" />
+      <workItem from="1574782084192" duration="1984000" />
+      <workItem from="1574787900245" duration="1385000" />
+      <workItem from="1574797625911" duration="10843000" />
+      <workItem from="1574849093880" duration="10741000" />
+      <workItem from="1574863057496" duration="6369000" />
+      <workItem from="1574880302672" duration="110000" />
+      <workItem from="1574882417165" duration="7607000" />
+      <workItem from="1574930380693" duration="4312000" />
+      <workItem from="1575022383255" duration="14980000" />
+      <workItem from="1575046057153" duration="1327000" />
+      <workItem from="1575196761768" duration="9564000" />
+      <workItem from="1575282909465" duration="1031000" />
+      <workItem from="1575284012189" duration="18150000" />
+      <workItem from="1575363341932" duration="1336000" />
+      <workItem from="1575375096319" duration="11860000" />
+      <workItem from="1575399564746" duration="654000" />
+      <workItem from="1575400867278" duration="670000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
