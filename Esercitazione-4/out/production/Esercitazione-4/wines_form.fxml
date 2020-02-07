@@ -92,6 +92,14 @@
          <children>
             <HBox alignment="CENTER">
                <children>
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" style="-fx-background-color: white; -fx-background-radius: 0;" text="Logout" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
                   <ComboBox fx:id="wineSelector" maxHeight="-Infinity" prefHeight="25.0" prefWidth="80.0" promptText="Wine" style="-fx-background-color: white; -fx-background-radius: 0;">
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" />

@@ -4,9 +4,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.stage.Window;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -44,6 +50,12 @@ public class WinesController implements Initializable {
     private Button buyWine;
 
     /**
+     * The button for logging the user out
+     */
+    @FXML
+    private Button logoutButton;
+
+    /**
      * TexField to choose ho much wine to buy
      */
     @FXML
@@ -62,6 +74,12 @@ public class WinesController implements Initializable {
      */
     @FXML
     private TextField availableWine;
+
+    /**
+     * Used to change scene back and forth
+     */
+    Stage stage = new Stage();
+    Scene scene;
 
     /**
      * This list is used to set the name of the wine selected so that it can be sent to the DB
@@ -103,6 +121,17 @@ public class WinesController implements Initializable {
          * I save the wine selection in a variable to improve code readability
          */
         String wineSelected = wineSelector.getSelectionModel().getSelectedItem();
+
+        /**
+         *  Before calling the function i check that the TextFields aren't empty,
+         *  if they are i send a message to the user letting him/her know what's missing.
+         *
+         *  The first thing checked is the wine selection
+         */
+        if (wineSelector.getValue() == null) {
+            showAlert(Alert.AlertType.ERROR, window, "Form error!", "Please select a wine");
+            return;
+        }
 
         /**
          * I make a simple query to the DB to check how many bottles of the selected wine are available,
@@ -147,7 +176,7 @@ public class WinesController implements Initializable {
          *
          *  The first thing checked is the wine selection
          */
-        if (wineSelector.getValue().equals("")) {
+        if (wineSelector.getValue() == null) {
             showAlert(Alert.AlertType.ERROR, window, "Form error!", "Please select a wine");
             return;
         }
@@ -206,7 +235,7 @@ public class WinesController implements Initializable {
          *
          *  The first thing checked is the wine selection
          */
-        if (wineSelector.getValue().equals("")) {
+        if (wineSelector.getValue() == null) {
             showAlert(Alert.AlertType.ERROR, window, "Form error!", "Please select a wine");
             return;
         }
@@ -243,6 +272,28 @@ public class WinesController implements Initializable {
             }
         } catch (NumberFormatException e_buy) {
             e_buy.printStackTrace();
+        }
+    }
+
+    /**
+     * At the click of the logout button i close thw wines form
+     * and open the login/registration form
+     *
+     * @param actionEvent The button gets clicked
+     */
+    @FXML
+    void logout(ActionEvent actionEvent) {
+        try {
+            Window window = logoutButton.getScene().getWindow();
+            infoBox("See you next time", null, "Logout");
+            Node source = (Node) actionEvent.getSource();
+            stage = (Stage) source.getScene().getWindow();
+            this.scene = new Scene(FXMLLoader.load(getClass().getResource("/user_form.fxml")));
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

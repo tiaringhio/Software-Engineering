@@ -3,6 +3,7 @@ package wineStore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -12,10 +13,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * This is the controller for login and user registration
+ *
+ * @author Mattia Ricci mattia.ricci1@studenti.unipr.it
+ * @author Gaspare Riccardo Lo Bue gasparericcardo.lobue@studenti.unipr.it
  */
 public class UserController {
 
@@ -83,6 +86,12 @@ public class UserController {
      */
     @FXML
     private Button loginButton;
+
+    /**
+     * Used to change scene back and forth
+     */
+    Stage stage = new Stage();
+    Scene scene;
 
     /**
      * This method lets the user register.
@@ -216,10 +225,11 @@ public class UserController {
                 infoBox("Please enter the correct user and password", null, "Failed");
             } else {
                 infoBox("Login successful", null, "Welcome back");
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/wines_form.fxml"));
-                stage.setTitle("Welcome");
-                stage.setScene(new Scene(root, 800, 500));
+                Node source = (Node) actionEvent.getSource();
+                stage = (Stage) source.getScene().getWindow();
+                this.scene = new Scene(FXMLLoader.load(getClass().getResource("/wines_form.fxml")));
+                stage.setScene(scene);
+                stage.setResizable(false);
                 stage.show();
             }
         } catch (IOException e_login) {
@@ -277,10 +287,12 @@ public class UserController {
             if (!loginCheck) {
                 infoBox("Please enter the correct user and password", null, "Failed");
             } else {
-                Stage stage = new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/employee_form.fxml"));
-                stage.setTitle("Welcome");
-                stage.setScene(new Scene(root, 800, 500));
+                infoBox("Login successful", null, "Welcome back");
+                Node source = (Node) actionEvent.getSource();
+                stage = (Stage) source.getScene().getWindow();
+                this.scene = new Scene(FXMLLoader.load(getClass().getResource("/employee_form.fxml")));
+                stage.setScene(scene);
+                stage.setResizable(false);
                 stage.show();
             }
         } catch (IOException e_adminLogin) {
