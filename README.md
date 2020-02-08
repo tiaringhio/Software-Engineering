@@ -1,5 +1,5 @@
 # Software Engineering
-Software Engineering course @ UniPr
+Software Engineering course assignments @ UniPr
 
 - [Software Engineering](#software-engineering)
 
